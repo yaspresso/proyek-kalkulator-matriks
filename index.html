@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalkulator Matriks Canggih Bro!</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="hero">
+        <div class="container">
+            <h1>Kalkulator Matriks</h1>
+            <p>Operasi Penjumlahan, Pengurangan, dan Perkalian</p>
+        </div>
+    </header>
+
+    <main class="container app-container">
+        <section class="input-section">
+            <h2>Pengaturan Matriks</h2>
+            <div class="form-group">
+                <label for="matrixRows">Jumlah Baris (m):</label>
+                <input type="number" id="matrixRows" min="1" value="2">
+            </div>
+            <div class="form-group">
+                <label for="matrixCols">Jumlah Kolom (n):</label>
+                <input type="number" id="matrixCols" min="1" value="2">
+            </div>
+            <button id="createMatricesBtn" class="btn primary">Buat Matriks</button>
+        </section>
+
+        <section class="matrices-container" id="matricesContainer">
+            </section>
+
+        <section class="operation-section">
+            <h2>Operasi Matriks</h2>
+            <div class="operation-controls">
+                <select id="matrixASelect" class="matrix-select">
+                    </select>
+                <select id="operationSelect" class="operation-select">
+                    <option value="add">+</option>
+                    <option value="subtract">-</option>
+                    <option value="multiply">x</option>
+                </select>
+                <select id="matrixBSelect" class="matrix-select">
+                    </select>
+                <button id="calculateBtn" class="btn primary">Hitung</button>
+            </div>
+        </section>
+
+        <section class="result-section" id="resultSection">
+            <h2>Hasil Operasi</h2>
+            <div id="resultMatrix">
+                </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Kalkulator Matriks Bro</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

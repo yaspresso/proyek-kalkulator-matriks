@@ -1,0 +1,343 @@
+/* style.css */
+
+/* --- Reset & Basic Styles --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; /* Penting biar padding dan border gak nambah ukuran elemen */
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Font yang modern dan bersih */
+    line-height: 1.6;
+    background: linear-gradient(to right bottom, #a8dadc, #457b9d); /* Gradient background yang soft */
+    color: #333;
+    min-height: 100vh; /* Pastikan body setidaknya setinggi viewport */
+    display: flex;
+    flex-direction: column; /* Untuk footer di bawah */
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* --- Header / Hero Section --- */
+.hero {
+    background-color: #1d3557; /* Warna biru gelap */
+    color: #f1faee;
+    padding: 40px 0;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: #a8dadc; /* Warna aksen */
+}
+
+.hero p {
+    font-size: 1.2em;
+    opacity: 0.9;
+}
+
+/* --- Main Application Container --- */
+.app-container {
+    flex-grow: 1; /* Biar app-container mengisi ruang kosong di antara header dan footer */
+    background-color: #f1faee; /* Warna background utama aplikasi */
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    margin-top: 30px;
+    margin-bottom: 30px;
+    padding: 30px;
+}
+
+section {
+    margin-bottom: 40px;
+    padding: 20px;
+    border-bottom: 1px solid #e0e0e0; /* Garis pemisah antar section */
+}
+
+section:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    color: #1d3557;
+    text-align: center;
+    margin-bottom: 25px;
+    font-size: 2em;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 60px;
+    height: 3px;
+    background-color: #457b9d; /* Warna aksen */
+    border-radius: 2px;
+}
+
+/* --- Form Groups (Input Fields) --- */
+.form-group {
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Tengahkan label dan input */
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #457b9d;
+    font-size: 1.1em;
+}
+
+.form-group input[type="number"],
+.matrix-input {
+    width: 100%;
+    max-width: 200px; /* Batasi lebar input ordo */
+    padding: 12px 15px;
+    border: 2px solid #a8dadc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    transition: all 0.3s ease;
+    text-align: center; /* Angka di tengah */
+}
+
+.form-group input[type="number"]:focus,
+.matrix-input:focus {
+    border-color: #1d3557;
+    box-shadow: 0 0 10px rgba(29, 53, 87, 0.2);
+}
+
+/* --- Buttons --- */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    border: none;
+    margin-top: 15px; /* Spasi dari input */
+}
+
+.btn.primary {
+    background-color: #457b9d; /* Biru sedang */
+    color: #f1faee;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn.primary:hover {
+    background-color: #1d3557; /* Biru gelap */
+    transform: translateY(-2px); /* Efek sedikit naik */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* --- Matrices Container (Dynamically Generated) --- */
+.matrices-container {
+    display: flex;
+    flex-wrap: wrap; /* Agar matriks bisa turun ke baris baru jika layar sempit */
+    justify-content: center;
+    gap: 30px; /* Jarak antar matriks */
+    padding: 20px 0;
+}
+
+.matrix-wrapper {
+    background-color: #e0f2f7; /* Background kotak matriks */
+    border: 2px solid #a8dadc;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    min-width: 250px; /* Lebar minimum untuk kotak matriks */
+}
+
+.matrix-wrapper h3 {
+    color: #1d3557;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.matrix-table {
+    display: grid;
+    gap: 8px; /* Jarak antar sel input */
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.matrix-table input {
+    width: 60px; /* Lebar input sel matriks */
+    height: 60px; /* Tinggi input sel matriks */
+    text-align: center;
+    font-size: 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border-color 0.2s ease;
+    -moz-appearance: textfield; /* Sembunyikan panah di input number Firefox */
+}
+
+.matrix-table input::-webkit-outer-spin-button,
+.matrix-table input::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Sembunyikan panah di input number Chrome/Safari */
+    margin: 0;
+}
+
+.matrix-table input:focus {
+    border-color: #457b9d;
+    box-shadow: 0 0 5px rgba(69, 123, 157, 0.3);
+}
+
+/* --- Operation Controls --- */
+.operation-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px; /* Jarak antar elemen kontrol operasi */
+    flex-wrap: wrap; /* Agar responsif */
+}
+
+.operation-controls select {
+    padding: 10px 15px;
+    border: 2px solid #a8dadc;
+    border-radius: 8px;
+    font-size: 1.1em;
+    outline: none;
+    background-color: #f1faee;
+    color: #333;
+    transition: border-color 0.3s ease;
+    min-width: 80px; /* Lebar minimum dropdown */
+    text-align: center;
+}
+
+.operation-controls select:focus {
+    border-color: #1d3557;
+}
+
+/* --- Result Section --- */
+.result-section {
+    text-align: center;
+}
+
+#resultMatrix {
+    margin-top: 25px;
+    padding: 20px;
+    background-color: #e0f2f7;
+    border: 2px solid #457b9d;
+    border-radius: 12px;
+    display: inline-block; /* Agar div hasilnya menyesuaikan lebar konten */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.result-matrix-table {
+    display: grid;
+    gap: 8px; /* Jarak antar sel hasil */
+    justify-content: center;
+}
+
+.result-matrix-table div {
+    width: 60px;
+    height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    color: #1d3557;
+    background-color: #a8dadc; /* Warna background sel hasil */
+    border-radius: 5px;
+    border: 1px solid #457b9d;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: #1d3557;
+    color: #f1faee;
+    text-align: center;
+    padding: 20px 0;
+    margin-top: auto; /* Untuk menempatkan footer di paling bawah */
+    box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Responsive Design (Media Queries) --- */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 2.5em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .app-container {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+
+    .operation-controls {
+        flex-direction: column; /* Tombol operasi jadi vertikal */
+        gap: 10px;
+    }
+
+    .operation-controls select,
+    .btn {
+        width: 100%; /* Lebar penuh di mobile */
+        max-width: 250px;
+    }
+
+    .matrix-wrapper {
+        min-width: unset; /* Hapus min-width di mobile */
+        width: 90%; /* Ambil 90% lebar layar */
+        margin: 0 auto;
+    }
+
+    .matrix-table input,
+    .result-matrix-table div {
+        width: 50px; /* Sel matriks lebih kecil di mobile */
+        height: 50px;
+        font-size: 1.1em;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        width: 95%;
+        padding: 15px 0;
+    }
+
+    .hero h1 {
+        font-size: 2em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .app-container {
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5em;
+    }
+}
